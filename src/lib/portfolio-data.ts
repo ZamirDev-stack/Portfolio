@@ -18,10 +18,10 @@ export const profile = {
   // EDITABLE: real email
   email: "hello@showketfarooq.dev",
   // EDITABLE: real GitHub username
-  githubUsername: "showketfarooq",
-  githubUrl: "https://github.com/showketfarooq",
+  githubUsername: "ZamirDev-stack",
+  githubUrl: "https://github.com/ZamirDev-stack",
   // EDITABLE: real LinkedIn
-  linkedinUrl: "https://www.linkedin.com/in/showketfarooq",
+  linkedinUrl: "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
   // EDITABLE: real resume path (drop a PDF at /public/resume.pdf)
   resumeUrl: "/resume.pdf",
   status: "Open to Opportunities",
@@ -139,7 +139,7 @@ export const projects: Project[] = [
       "Summary statistics with NumPy",
       "Reusable analysis pipeline",
     ],
-    github: "https://github.com/showketfarooq",
+    github: "https://github.com/ZamirDev-stack",
     accent: "from-emerald-500/20 to-teal-500/10",
     year: "2025",
     visual: "chart",
@@ -164,7 +164,7 @@ export const projects: Project[] = [
       "Input validation & error handling",
       "JUnit-friendly structure",
     ],
-    github: "https://github.com/showketfarooq",
+    github: "https://github.com/ZamirDev-stack",
     accent: "from-amber-500/20 to-orange-500/10",
     year: "2025",
     visual: "terminal",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
       "Custom rules by extension",
       "Cross-platform paths",
     ],
-    github: "https://github.com/showketfarooq",
+    github: "https://github.com/ZamirDev-stack",
     accent: "from-rose-500/20 to-pink-500/10",
     year: "2024",
     visual: "files",
@@ -214,7 +214,7 @@ export const projects: Project[] = [
       "Accessibility-first markup",
       "Dark/light theme",
     ],
-    github: "https://github.com/showketfarooq",
+    github: "https://github.com/ZamirDev-stack",
     demo: "#",
     accent: "from-emerald-500/20 to-cyan-500/10",
     year: "2026",
@@ -385,15 +385,15 @@ export type SocialLink = {
 export const socials: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/showketfarooq",
+    href: "https://github.com/ZamirDev-stack",
     icon: "Github",
-    handle: "@showketfarooq",
+    handle: "@ZamirDev-stack",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/showketfarooq",
+    href: "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
     icon: "Linkedin",
-    handle: "Showket Farooq",
+    handle: "Zamir Farooq",
   },
   {
     label: "Email",

@@ -129,8 +129,8 @@ const jsonLd = {
     "Algorithms",
   ],
   sameAs: [
-    "https://github.com/showketfarooq",
-    "https://www.linkedin.com/in/showketfarooq",
+    "https://github.com/ZamirDev-stack",
+    "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
     "mailto:hello@showketfarooq.dev",
   ],
 };
