@@ -21,7 +21,7 @@ export const profile = {
   githubUsername: "ZamirDev-stack",
   githubUrl: "https://github.com/ZamirDev-stack",
   // EDITABLE: real LinkedIn
-  linkedinUrl: "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
+  linkedinUrl: "https://www.linkedin.com/in/showket-farooq-1a1804397/",
   // EDITABLE: real resume path (drop a PDF at /public/resume.pdf)
   resumeUrl: "/resume.pdf",
   status: "Open to Opportunities",
@@ -391,7 +391,7 @@ export const socials: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
+    href: "https://www.linkedin.com/in/showket-farooq-1a1804397/",
     icon: "Linkedin",
     handle: "Zamir Farooq",
   },

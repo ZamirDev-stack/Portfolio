@@ -130,7 +130,7 @@ const jsonLd = {
   ],
   sameAs: [
     "https://github.com/ZamirDev-stack",
-    "https://www.linkedin.com/in/xamir-farooq-1a1804397/",
+    "https://www.linkedin.com/in/showket-farooq-1a1804397/",
     "mailto:hello@showketfarooq.dev",
   ],
 };

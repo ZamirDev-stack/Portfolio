@@ -209,7 +209,7 @@ function BrowserMock() {
         <span className="size-2 rounded-full bg-emerald-400/70" />
         <div className="ml-2 flex-1 rounded border border-border bg-background/60 px-2 py-0.5">
           <span className="font-mono text-[8px] text-muted-foreground">
-            showketfarooq.dev
+            ZamirDev-stack
           </span>
         </div>
       </div>

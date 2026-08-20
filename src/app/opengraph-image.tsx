@@ -146,7 +146,7 @@ export default async function Image() {
           }}
         >
           <span>Srinagar, Jammu &amp; Kashmir, India</span>
-          <span>github.com/showketfarooq</span>
+          <span>github.com/ZamirDev-stack</span>
         </div>
       </div>
     ),
