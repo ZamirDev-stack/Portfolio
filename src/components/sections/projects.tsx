@@ -85,7 +85,7 @@ export function Projects() {
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
                     "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card/40",
-                    "transition-colors hover:border-primary/40"
+                    "card-hover hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
                   )}
                 >
                   {/* Visual header */}

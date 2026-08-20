@@ -143,3 +143,59 @@ Unresolved items (by design, not bugs):
 - GitHub section shows the "awaiting real handle" state because the placeholder username `showketfarooq` isn't a real account. This is honest and graceful — it lights up the moment a real username is set in `portfolio-data.ts`.
 - Achievements show 0 "Completed" — accurate (no fabricated credentials). Planned items are clearly framed as a roadmap.
 - Resume PDF is a placeholder; the preview shows real content regardless.
+
+---
+Task ID: 3
+Agent: webDevReview cron (autonomous)
+Task: Scheduled 15-min QA + improvement cycle. Assess current status via agent-browser, fix bugs found, then add new features + styling polish per mandatory requirements.
+
+Work Log:
+
+**PHASE 1 — QA via agent-browser (fresh server)**
+Started dev server fresh inside the QA bash call, ran full smoke tests:
+- Home: 200, Sitemap: 200, Robots: 200, Resume: 200, Favicon: 200
+- **BUG FOUND**: `opengraph-image` returned 500 with `Error: Invalid background image: "#0a0c10"` — Satori (edge OG renderer) rejected the multi-layer radial-gradient background string.
+- **BUG FOUND**: 4× hydration-mismatch console errors on page load.
+- Command palette (⌘K): works (Toggle theme / Tell me a secret / Download resume options present).
+- Project detail modal: opens and closes with Escape.
+- Contact form: fills + POST 200 (verified via DOM snapshot + VLM: form layout 9/10).
+- Mobile full page rendered but VLM flagged horizontal overflow in Skills "Core Concepts" card on mobile.
+
+**PHASE 2 — Bug fixes**
+1. OG image 500 → rewrote `src/app/opengraph-image.tsx` with Satori-safe styling: solid `backgroundColor: "#0a0c10"` + separate absolutely-positioned solid-color glow blobs instead of a complex gradient background string. Verified: `GET /opengraph-image 200`, returns valid 1200×630 PNG (52KB).
+2. Hydration mismatch → removed hardcoded `className="dark"` from `<html>`, added a no-flash inline theme script in `<head>` that sets the theme class + `color-scheme` BEFORE hydration based on localStorage / system preference. Verified: reloaded page, `agent-browser errors` returns empty (no hydration warnings).
+3. Mobile Skills horizontal overflow → root cause was skill badges using `inline-flex` without `max-w-full`, so long names like "Object-Oriented Programming" + level badge forced the row wider than the viewport. Fix: added `max-w-full` to the badge `<span>`, `shrink-0` to the dot + level chip, and `break-words` wrapper around the skill name. Also added `overflow-x-hidden` to the root page wrapper as a safety net. Verified: `document.documentElement.scrollWidth - clientWidth === 0` (no horizontal overflow). VLM: mobile Skills 9/10.
+
+**PHASE 3 — New features + styling polish (mandatory)**
+1. **Animated count-up stats** — new `src/components/bits/animated-count.tsx` component using framer-motion `useSpring` + `useInView`. Counts from 0 to value when scrolled into view, SSR-safe (renders static value on server), reduced-motion-aware (skips animation). Wired into About stats grid. Numeric stats ("2", "4") animate; string stats ("BCA", "Open") render statically.
+2. **Status ticker ribbon** — new `src/components/bits/status-ticker.tsx` placed between Projects and Education. Shows a live green "NOW" indicator (pulsing dot) + rotating "currently: <focus>" text (cycles every 3.2s through 5 real focuses: sharpening DSA, building Pandas pipeline, practising OOP in Java, automating workflow, prepping for internship) + an "Open to Opportunities" chip. Fixed initial truncation issue by restructuring the flex container with `min-w-0` + `truncate`.
+3. **Premium CSS utilities** added to `globals.css`:
+   - `.card-hover` — translateY(-3px) lift on hover with smooth transition
+   - `.divider` — gradient section divider line
+   - `.spotlight` + `::after` — mouse-tracking radial glow on cards (paired with new `Spotlight` wrapper component)
+   - `.link-underline` — animated left-to-right underline on link hover
+4. Applied `card-hover` + `hover:shadow-xl hover:shadow-primary/5` to project cards and skill cards for premium lift + glow on hover.
+5. Applied `link-underline` to footer sitemap links.
+6. Added `group` hover state + `transition-colors hover:bg-accent/30` to About stats cells.
+7. Added `tabular-nums` to the stats numbers for clean digit alignment during count-up.
+
+**PHASE 4 — Verification**
+- Lint: clean (0 errors, 0 warnings).
+- All routes: home 200, og 200, sitemap 200, robots 200, resume 200, favicon 200.
+- Console errors: none (hydration fixed).
+- Desktop full page VLM: 9/10 — "Layout is clean, text is legible, spacing is consistent. Status ticker visible between Projects and Education. Footer anchored at bottom."
+- Mobile full page: horizontal overflow fixed (scrollWidth === clientWidth). Skills 9/10. Footer at bottom.
+- Status ticker: VLM confirmed all 3 elements visible (NOW indicator, "currently: building a data-analysis pipeline with Pandas", Open to Opportunities chip).
+
+Stage Summary:
+- 2 real bugs fixed (OG image 500, hydration mismatch) + 1 mobile regression fixed (Skills overflow).
+- 2 new features added (animated count-up stats, status ticker ribbon).
+- 4 new premium CSS utilities (card-hover, divider, spotlight, link-underline) + applied across cards/links.
+- Final state: desktop 9/10, mobile Skills 9/10, lint clean, no console errors, all routes healthy.
+- Dev server running on :3000 for preview.
+
+Unresolved items (by design, not bugs):
+- GitHub section still shows the "awaiting real handle" state (placeholder username isn't a real account — honest and graceful).
+- Achievements show 0 "Completed" (accurate — no fabricated credentials).
+- Resume PDF is a placeholder; the preview shows real content regardless.
+- The 15-min recurring webDevReview cron (job ID 330470) will continue auditing + improving autonomously.

@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CommandPalette } from "@/components/layout/command-palette";
 import { EasterEgg } from "@/components/layout/easter-egg";
+import { StatusTicker } from "@/components/bits/status-ticker";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
@@ -24,6 +25,7 @@ export default function Home() {
         <About />
         <Skills />
         <Projects />
+        <StatusTicker />
         <Education />
         <Journey />
         <Achievements />

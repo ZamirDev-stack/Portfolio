@@ -214,6 +214,7 @@ function HeroVisual() {
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="overflow-hidden rounded-2xl glass-strong border border-border shadow-2xl"
+          style={{ boxShadow: "0 0 60px -12px color-mix(in oklch, var(--primary) 35%, transparent), 0 20px 50px -20px rgba(0,0,0,0.6)" }}
         >
           {/* window chrome */}
           <div className="flex items-center gap-1.5 border-b border-border bg-card/60 px-4 py-3">
@@ -261,6 +262,11 @@ function HeroVisual() {
             <p className="pt-1 text-emerald-300">
               <span className="text-foreground/60">{"// "}</span>
               ready to build.
+              <span
+                aria-hidden="true"
+                className="ml-0.5 inline-block h-[1.1em] w-[7px] translate-y-[0.15em] bg-emerald-400 align-middle"
+                style={{ animation: "blink-cursor 1.1s steps(2, start) infinite" }}
+              />
             </p>
           </div>
         </motion.div>

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { profile, stats } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading } from "@/components/bits/reveal";
+import { AnimatedCount } from "@/components/bits/animated-count";
 
 const highlights = [
   {
@@ -108,13 +109,15 @@ export function About() {
             <Reveal delay={0.24}>
               <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">
                 {stats.map((s) => (
-                  <div key={s.label} className="bg-card/60 p-4 text-center">
+                  <div
+                    key={s.label}
+                    className="group bg-card/60 p-4 text-center transition-colors hover:bg-accent/30"
+                  >
                     <dt className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                       {s.label}
                     </dt>
-                    <dd className="mt-1 font-sora text-2xl font-bold text-foreground">
-                      {s.value}
-                      <span className="text-primary">{s.suffix}</span>
+                    <dd className="mt-1 font-sora text-2xl font-bold text-foreground tabular-nums">
+                      <AnimatedCount value={s.value} suffix={s.suffix} />
                     </dd>
                     <p className="mt-0.5 text-[11px] text-muted-foreground">
                       {s.hint}

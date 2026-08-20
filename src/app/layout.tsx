@@ -164,7 +164,7 @@ export default function RootLayout({
         >
           <CustomCursor />
           <ScrollProgress />
-          <div className="relative flex min-h-screen flex-col">
+          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
             {children}
           </div>
           <BackToTop />

@@ -48,7 +48,7 @@ export function Skills() {
             const Icon = iconMap[cat.icon] ?? Code2;
             return (
               <Reveal key={cat.title} delay={idx * 0.08}>
-                <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 p-6 transition-colors hover:border-primary/40">
+                <article className="group card-hover relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 p-6 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
                   {/* glow */}
                   <div className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-primary/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -76,13 +76,13 @@ export function Skills() {
                       <li key={s.name}>
                         <span
                           className={cn(
-                            "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+                            "inline-flex max-w-full items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors",
                             levelStyles[s.level]
                           )}
                         >
-                          <span className="size-1.5 rounded-full bg-current opacity-70" />
-                          {s.name}
-                          <span className="font-mono text-[9px] uppercase tracking-wider opacity-60">
+                          <span className="size-1.5 shrink-0 rounded-full bg-current opacity-70" />
+                          <span className="break-words">{s.name}</span>
+                          <span className="shrink-0 font-mono text-[9px] uppercase tracking-wider opacity-60">
                             {s.level}
                           </span>
                         </span>

@@ -56,7 +56,7 @@ export function Footer() {
                 <li key={l.id}>
                   <button
                     onClick={() => handleNav(l.id)}
-                    className="text-muted-foreground transition-colors hover:text-primary"
+                    className="link-underline text-muted-foreground transition-colors hover:text-primary"
                   >
                     {l.label}
                   </button>
