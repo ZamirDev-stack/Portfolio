@@ -1,0 +1,17 @@
+{
+  "name": "Showket Farooq — Portfolio",
+  "short_name": "Showket",
+  "description": "BCA student and aspiring software developer. Building practical projects with Python, Java, and data tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#0a0c10",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
