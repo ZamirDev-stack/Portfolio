@@ -21,9 +21,9 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const levelStyles: Record<string, string> = {
-  Learning: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-  Comfortable: "bg-teal-500/10 text-teal-300 border-teal-500/30",
-  Confident: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+  Learning: "bg-amber-400/15 text-amber-300 border-amber-400/40",
+  Comfortable: "bg-teal-400/15 text-teal-200 border-teal-400/40",
+  Confident: "bg-emerald-400/15 text-emerald-300 border-emerald-400/40",
 };
 
 export function Skills() {

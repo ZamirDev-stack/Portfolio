@@ -21,7 +21,6 @@ const KONAMI = [
 export function EasterEgg() {
   const [show, setShow] = React.useState(false);
   const [matched, setMatched] = React.useState(0);
-  const [hint, setHint] = React.useState(false);
 
   // Konami sequence detector
   React.useEffect(() => {
@@ -49,34 +48,8 @@ export function EasterEgg() {
     return () => window.removeEventListener("open-easter-egg", onOpen);
   }, []);
 
-  // brief hint after 6s idle on home
-  React.useEffect(() => {
-    const t = setTimeout(() => setHint(true), 6000);
-    const dismiss = () => setHint(false);
-    window.addEventListener("scroll", dismiss, { once: true, passive: true });
-    return () => {
-      clearTimeout(t);
-      window.removeEventListener("scroll", dismiss);
-    };
-  }, []);
-
   return (
     <>
-      {/* subtle hint badge */}
-      <AnimatePresence>
-        {hint && !show && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 left-6 z-40 hidden items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur md:flex"
-          >
-            <Terminal className="size-3.5 text-primary" />
-            Psst… try the Konami code.
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <AnimatePresence>
         {show && (
           <motion.div

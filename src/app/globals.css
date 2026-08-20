@@ -201,27 +201,36 @@
     -webkit-backdrop-filter: blur(24px) saturate(160%);
   }
 
-  /* Gradient text */
+  /* Gradient text — solid color fallback so text is ALWAYS readable,
+     even if background-clip:text isn't supported or fails to render. */
   .text-gradient {
+    color: var(--primary);
     background: linear-gradient(135deg,
       var(--primary) 0%,
       oklch(0.78 0.13 184) 50%,
       var(--primary) 100%);
     background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .text-gradient {
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   .text-gradient-warm {
+    color: oklch(0.78 0.17 80);
     background: linear-gradient(135deg,
       oklch(0.78 0.17 80) 0%,
       oklch(0.72 0.2 16) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  }
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .text-gradient-warm {
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   /* Premium glow ring */

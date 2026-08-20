@@ -3,7 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Download, FileText, Eye, CheckCircle2 } from "lucide-react";
-import { profile } from "@/lib/portfolio-data";
+import { profile, projects } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading } from "@/components/bits/reveal";
 import { Button } from "@/components/ui/button";
 
@@ -153,10 +153,44 @@ export function Resume() {
                     </div>
                   </div>
 
-                  <ResumeLine label="Profile" delay={0.1} />
-                  <ResumeLine label="Skills" delay={0.2} />
-                  <ResumeLine label="Projects" delay={0.3} />
-                  <ResumeLine label="Education" delay={0.4} />
+                  <ResumeSection label="Profile" delay={0.1}>
+                    <p className="text-[10px] leading-relaxed text-muted-foreground">
+                      BCA student & aspiring developer. Python, Java, data
+                      analysis. Open to internships.
+                    </p>
+                  </ResumeSection>
+
+                  <ResumeSection label="Skills" delay={0.18}>
+                    <p className="text-[10px] leading-relaxed text-foreground/80">
+                      <span className="text-primary">Languages:</span> Python · Java
+                    </p>
+                    <p className="mt-0.5 text-[10px] leading-relaxed text-foreground/80">
+                      <span className="text-primary">Data:</span> Pandas · NumPy · Matplotlib · Excel
+                    </p>
+                    <p className="mt-0.5 text-[10px] leading-relaxed text-foreground/80">
+                      <span className="text-primary">Tools:</span> Git · GitHub · VS Code · Linux
+                    </p>
+                  </ResumeSection>
+
+                  <ResumeSection label="Projects" delay={0.26}>
+                    {projects.map((p) => (
+                      <p key={p.id} className="text-[10px] leading-relaxed text-foreground/80">
+                        <span className="font-medium text-foreground">— {p.title}</span>
+                        <span className="text-muted-foreground"> · {p.tags.slice(0, 2).join(", ")}</span>
+                      </p>
+                    ))}
+                  </ResumeSection>
+
+                  <ResumeSection label="Education" delay={0.34}>
+                    <p className="text-[10px] leading-relaxed text-foreground/80">
+                      <span className="font-medium text-foreground">BCA</span>
+                      <span className="text-muted-foreground"> — Currently pursuing · 2024–2027</span>
+                    </p>
+                    <p className="mt-0.5 text-[10px] leading-relaxed text-foreground/80">
+                      <span className="font-medium text-foreground">12th</span>
+                      <span className="text-muted-foreground"> — Higher Secondary · Completed</span>
+                    </p>
+                  </ResumeSection>
 
                   <div className="mt-auto flex items-center justify-between border-t border-border pt-3 text-[10px] text-muted-foreground">
                     <span>{profile.location}</span>
@@ -172,7 +206,15 @@ export function Resume() {
   );
 }
 
-function ResumeLine({ label, delay }: { label: string; delay: number }) {
+function ResumeSection({
+  label,
+  delay,
+  children,
+}: {
+  label: string;
+  delay: number;
+  children: React.ReactNode;
+}) {
   return (
     <motion.div
       initial={{ opacity: 1, y: 10 }}
@@ -181,14 +223,10 @@ function ResumeLine({ label, delay }: { label: string; delay: number }) {
       transition={{ delay }}
       className="mt-4"
     >
-      <p className="font-mono text-[10px] uppercase tracking-wider text-primary">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-primary">
         {label}
       </p>
-      <div className="mt-2 space-y-1.5">
-        <div className="h-2 w-full rounded bg-muted-foreground/15" />
-        <div className="h-2 w-5/6 rounded bg-muted-foreground/15" />
-        <div className="h-2 w-2/3 rounded bg-muted-foreground/15" />
-      </div>
+      <div className="mt-1.5">{children}</div>
     </motion.div>
   );
 }

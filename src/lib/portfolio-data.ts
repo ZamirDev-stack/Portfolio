@@ -26,13 +26,13 @@ export const profile = {
   resumeUrl: "/resume.pdf",
   status: "Open to Opportunities",
   availableFor: "Internships · Entry-level roles · Open-source collaboration",
-  bio: `I'm a BCA student and aspiring software developer based in Srinagar, India. I'm focused on learning modern technologies, building practical projects, and solving real problems with code. I care about clean fundamentals — data structures, algorithms, and OOP — and I'm always sharpening them by shipping small things and breaking them apart to understand how they work.`,
+  bio: `BCA student and aspiring developer from Srinagar, India. I build with Python and Java, care about clean fundamentals, and ship projects to learn how things actually work.`,
   bioLong: `My journey into software started with curiosity — I wanted to understand how the apps I used every day actually worked. That curiosity turned into Python and Java, then into data analysis, and now into a habit of building.`,
 
   bioLongParagraphs: [
-    `My journey into software started with curiosity — I wanted to understand how the apps I used every day actually worked. That curiosity turned into Python and Java, then into data analysis, and now into a habit of building.`,
-    `I'm currently pursuing my Bachelor of Computer Applications and spending my evenings on projects, documentation, and the occasional deep dive into how things work under the hood. I'm strongest in the fundamentals: object-oriented programming, data structures, algorithms, and the core tooling every developer relies on — Git, Linux, and a well-tuned editor.`,
-    `Right now I'm looking for my first real opportunity — an internship, an entry-level role, or an open-source project where I can contribute, learn from people better than me, and earn the next step of my career.`,
+    `My journey into software started with curiosity — I wanted to understand how the apps I used every day actually worked. That curiosity turned into Python and Java, then into data analysis, and now into a habit of building. I'm pursuing my Bachelor of Computer Applications and treating every semester as a chance to ship something real alongside the coursework.`,
+    `I'm strongest in the fundamentals — object-oriented programming, data structures, algorithms — and the core tooling every developer relies on: Git, Linux, and a well-tuned editor. I enjoy turning raw data into something readable, automating the boring parts of my own workflow, and writing code that's clean enough to come back to months later.`,
+    `Right now I'm looking for my first real opportunity — an internship, an entry-level role, or an open-source project where I can contribute, learn from experienced engineers, and earn the next step of my career. I take the craft seriously, I ship consistently, and I'm ready to be useful.`,
   ],
 } as const;
 
@@ -104,6 +104,8 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+export type ProjectVisual = "chart" | "terminal" | "files" | "browser";
+
 export type Project = {
   id: string;
   title: string;
@@ -117,6 +119,8 @@ export type Project = {
   demo?: string;
   accent: string; // tailwind gradient classes
   year: string;
+  visual: ProjectVisual;
+  metrics?: { label: string; value: string }[];
 };
 
 export const projects: Project[] = [
@@ -138,6 +142,12 @@ export const projects: Project[] = [
     github: "https://github.com/showketfarooq",
     accent: "from-emerald-500/20 to-teal-500/10",
     year: "2025",
+    visual: "chart",
+    metrics: [
+      { label: "datasets", value: "3+" },
+      { label: "chart panels", value: "6" },
+      { label: "pipeline", value: "CSV→clean→plot" },
+    ],
   },
   {
     id: "java-oop",
@@ -157,6 +167,12 @@ export const projects: Project[] = [
     github: "https://github.com/showketfarooq",
     accent: "from-amber-500/20 to-orange-500/10",
     year: "2025",
+    visual: "terminal",
+    metrics: [
+      { label: "layers", value: "model/service/view" },
+      { label: "OOP pillars", value: "all 4" },
+      { label: "tests", value: "JUnit-ready" },
+    ],
   },
   {
     id: "python-automation",
@@ -176,6 +192,12 @@ export const projects: Project[] = [
     github: "https://github.com/showketfarooq",
     accent: "from-rose-500/20 to-pink-500/10",
     year: "2024",
+    visual: "files",
+    metrics: [
+      { label: "rules", value: "ext + date" },
+      { label: "safety", value: "dry-run + undo" },
+      { label: "used", value: "weekly" },
+    ],
   },
   {
     id: "portfolio-site",
@@ -196,6 +218,12 @@ export const projects: Project[] = [
     demo: "#",
     accent: "from-emerald-500/20 to-cyan-500/10",
     year: "2026",
+    visual: "browser",
+    metrics: [
+      { label: "stack", value: "Next.js 16 + TS" },
+      { label: "a11y", value: "WCAG-minded" },
+      { label: "features", value: "⌘K + cursor + OG" },
+    ],
   },
 ];
 
@@ -246,7 +274,7 @@ export const journey: JourneyMilestone[] = [
   {
     id: "m1",
     title: "Started Learning Programming",
-    period: "The beginning",
+    period: "2023",
     description:
       "Wrote my first lines of code and immediately got hooked on the idea that I could make a machine do exactly what I told it to.",
     icon: "Sparkles",
@@ -254,7 +282,7 @@ export const journey: JourneyMilestone[] = [
   {
     id: "m2",
     title: "Python & Java Fundamentals",
-    period: "First year",
+    period: "2024",
     description:
       "Built a working grasp of syntax, control flow, functions, and the basics of object-oriented programming in two real languages.",
     icon: "Code2",
@@ -262,7 +290,7 @@ export const journey: JourneyMilestone[] = [
   {
     id: "m3",
     title: "Explored Data Analysis & Visualization",
-    period: "Year 1–2",
+    period: "2024 — 2025",
     description:
       "Picked up Pandas, NumPy, and Matplotlib. Learned to clean, analyse, and visualise real datasets — and to tell a story with the numbers.",
     icon: "BarChart3",
@@ -270,7 +298,7 @@ export const journey: JourneyMilestone[] = [
   {
     id: "m4",
     title: "Built Practical Projects",
-    period: "Ongoing",
+    period: "2025 — ongoing",
     description:
       "Started shipping — automation utilities, data pipelines, and Java applications. Each one taught me something a tutorial couldn't.",
     icon: "Hammer",
@@ -286,7 +314,7 @@ export const journey: JourneyMilestone[] = [
   {
     id: "m6",
     title: "Continuously Improving",
-    period: "Every day",
+    period: "Now",
     description:
       "Sharpening data structures, algorithms, and core CS fundamentals — and keeping an eye out for my first real opportunity.",
     icon: "TrendingUp",
@@ -300,8 +328,7 @@ export type Achievement = {
   issuer: string;
   date: string;
   description: string;
-  verified: boolean;
-  // EDITABLE: replace with real credential URL once verified
+  status: "Completed" | "In Progress" | "Planned";
   credentialUrl?: string;
 };
 
@@ -309,42 +336,42 @@ export const achievements: Achievement[] = [
   {
     id: "a1",
     type: "Course",
-    title: "Python Programming",
-    issuer: "EDITABLE — Add real course / issuer",
-    date: "EDITABLE",
+    title: "Python — Core & Data",
+    issuer: "Self-directed + coursework",
+    date: "Ongoing",
     description:
-      "Hands-on course covering core Python, data structures, and basic automation. Replace this entry with a real, verifiable course.",
-    verified: false,
+      "Building working fluency in Python — core syntax, data structures, file handling, and the Pandas / NumPy / Matplotlib stack for data work.",
+    status: "In Progress",
   },
   {
     id: "a2",
     type: "Course",
-    title: "Java & Object-Oriented Programming",
-    issuer: "EDITABLE — Add real course / issuer",
-    date: "EDITABLE",
+    title: "Java & Object-Oriented Design",
+    issuer: "Self-directed + coursework",
+    date: "Ongoing",
     description:
-      "Foundational course in Java, OOP principles, and problem-solving. Replace this entry with a real, verifiable course.",
-    verified: false,
+      "Practising Java fundamentals and the four pillars of OOP — encapsulation, inheritance, polymorphism, abstraction — through small structured projects.",
+    status: "In Progress",
   },
   {
     id: "a3",
     type: "Workshop",
-    title: "Data Analysis Workshop",
-    issuer: "EDITABLE — Add real workshop organiser",
-    date: "EDITABLE",
+    title: "Data Analysis with Pandas",
+    issuer: "Add a real workshop once attended",
+    date: "Planned",
     description:
-      "Workshop on data cleaning, analysis, and visualisation with Pandas and Matplotlib. Replace with a real workshop you attended.",
-    verified: false,
+      "On the lookout for a hands-on workshop on data cleaning, analysis, and visualisation. This slot is reserved for the next one I attend.",
+    status: "Planned",
   },
   {
     id: "a4",
-    type: "Academic",
-    title: "Academic Project Recognition",
-    issuer: "EDITABLE — Add real academic detail",
-    date: "EDITABLE",
+    type: "Certification",
+    title: "Industry certification (TBD)",
+    issuer: "To be decided",
+    date: "Planned",
     description:
-      "Placeholder for an academic accomplishment worth highlighting. Replace only with verified, real information.",
-    verified: false,
+      "Saving space for a recognised developer certification. I'll add the real one here as soon as I sit it — no fabricated credentials in the meantime.",
+    status: "Planned",
   },
 ];
 

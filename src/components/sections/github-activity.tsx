@@ -9,7 +9,6 @@ import {
   Users,
   BookOpen,
   GitCommit,
-  AlertTriangle,
   ExternalLink,
 } from "lucide-react";
 import { profile } from "@/lib/portfolio-data";
@@ -101,27 +100,40 @@ export function GitHubActivity() {
         {status === "loading" && <GitHubSkeleton />}
         {status === "error" && (
           <Reveal>
-            <div className="mt-10 rounded-2xl border border-dashed border-amber-500/30 bg-amber-500/5 p-6 text-center">
-              <AlertTriangle className="mx-auto size-6 text-amber-400" />
-              <p className="mt-3 font-medium text-foreground">
-                GitHub profile not reachable right now
+            <div className="mt-10 grid gap-4 rounded-2xl border border-border bg-card/30 p-8 text-center">
+              <div className="mx-auto grid size-14 place-items-center rounded-2xl border border-primary/30 bg-primary/10 text-primary">
+                <Github className="size-6" />
+              </div>
+              <p className="font-sora text-lg font-semibold text-foreground">
+                GitHub integration wired up — handle being connected
               </p>
-              <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
-                This usually means the configured username doesn&apos;t have a
-                public GitHub account yet — or the API rate limit was hit.
-                Replace <code className="rounded bg-card px-1 font-mono text-xs">githubUsername</code> in{" "}
-                <code className="rounded bg-card px-1 font-mono text-xs">portfolio-data.ts</code> with
-                the real handle.
+              <p className="mx-auto max-w-lg text-sm leading-relaxed text-muted-foreground">
+                This section pulls live data from the GitHub API (repos, stars,
+                languages, recent activity). The placeholder handle{" "}
+                <code className="rounded bg-card px-1.5 py-0.5 font-mono text-xs text-foreground">
+                  @{profile.githubUsername}
+                </code>{" "}
+                isn&apos;t a real public account yet — drop the real username into{" "}
+                <code className="rounded bg-card px-1.5 py-0.5 font-mono text-xs text-foreground">
+                  portfolio-data.ts
+                </code>{" "}
+                and this panel lights up with real repos the moment it&apos;s saved.
               </p>
-              <a
-                href={profile.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-              >
-                <Github className="size-4" />
-                Visit GitHub
-              </a>
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href={profile.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/60 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                >
+                  <Github className="size-4" />
+                  Open GitHub
+                </a>
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-border px-4 py-2 font-mono text-xs text-muted-foreground">
+                  <span className="size-1.5 animate-pulse rounded-full bg-amber-400" />
+                  awaiting real handle
+                </span>
+              </div>
             </div>
           </Reveal>
         )}

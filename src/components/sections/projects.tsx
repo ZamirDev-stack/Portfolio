@@ -5,6 +5,7 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink, X } from "lucide-react";
 import { projects, projectFilters, type Project } from "@/lib/portfolio-data";
 import { Reveal, SectionHeading } from "@/components/bits/reveal";
+import { ProjectVisual } from "@/components/bits/project-visual";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -93,29 +94,11 @@ export function Projects() {
                     className="relative block aspect-[16/10] w-full overflow-hidden text-left"
                     aria-label={`View details for ${p.title}`}
                   >
-                    <div
-                      className={cn(
-                        "absolute inset-0 bg-gradient-to-br opacity-80",
-                        p.accent
-                      )}
-                    />
-                    <div className="absolute inset-0 bg-grid bg-grid-fade opacity-50" />
+                    <ProjectVisual visual={p.visual} accent={p.accent} title={p.title} />
 
-                    {/* floating monogram */}
-                    <div className="absolute inset-0 grid place-items-center">
-                      <span className="font-mono text-6xl font-bold text-foreground/20 transition-transform duration-500 group-hover:scale-110">
-                        {p.title.slice(0, 2).toUpperCase()}
-                      </span>
-                    </div>
-
-                    {/* category chip */}
-                    <span className="absolute left-4 top-4 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
-                      {p.category}
-                    </span>
-
-                    {/* year */}
-                    <span className="absolute right-4 top-4 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {p.year}
+                    {/* category + year chip */}
+                    <span className="absolute right-4 top-4 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
+                      {p.category} · {p.year}
                     </span>
 
                     {/* hover overlay */}
@@ -133,6 +116,22 @@ export function Projects() {
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                       {p.blurb}
                     </p>
+
+                    {/* metrics strip — concrete, non-fabricated */}
+                    {p.metrics && (
+                      <dl className="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-border bg-border">
+                        {p.metrics.map((m) => (
+                          <div key={m.label} className="bg-card/60 px-2 py-1.5 text-center">
+                            <dt className="font-mono text-[8px] uppercase tracking-wider text-muted-foreground">
+                              {m.label}
+                            </dt>
+                            <dd className="mt-0.5 truncate text-[11px] font-medium text-foreground">
+                              {m.value}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
 
                     <ul className="mt-4 flex flex-wrap gap-1.5">
                       {p.tags.map((t) => (
@@ -239,18 +238,7 @@ function ProjectModal({
           >
             {/* header visual */}
             <div className="relative aspect-[16/7] w-full overflow-hidden">
-              <div
-                className={cn(
-                  "absolute inset-0 bg-gradient-to-br opacity-80",
-                  project.accent
-                )}
-              />
-              <div className="absolute inset-0 bg-grid bg-grid-fade opacity-50" />
-              <div className="absolute inset-0 grid place-items-center">
-                <span className="font-mono text-7xl font-bold text-foreground/20">
-                  {project.title.slice(0, 2).toUpperCase()}
-                </span>
-              </div>
+              <ProjectVisual visual={project.visual} accent={project.accent} title={project.title} />
               <button
                 onClick={onClose}
                 aria-label="Close"
@@ -258,7 +246,7 @@ function ProjectModal({
               >
                 <X className="size-4" />
               </button>
-              <span className="absolute left-4 top-4 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
+              <span className="absolute bottom-3 left-3 rounded-full border border-border bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur">
                 {project.category} · {project.year}
               </span>
             </div>

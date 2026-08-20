@@ -230,23 +230,23 @@ function HeroVisual() {
               <span className="text-emerald-400">const</span>{" "}
               <span className="text-teal-300">developer</span> = {"{"}
             </p>
-            <p className="pl-4">
+            <p className="pl-4 text-foreground/80">
               <span className="text-sky-300">name</span>:{" "}
               <span className="text-amber-300">&apos;{profile.firstName} {profile.lastName}&apos;</span>,
             </p>
-            <p className="pl-4">
+            <p className="pl-4 text-foreground/80">
               <span className="text-sky-300">role</span>:{" "}
               <span className="text-amber-300">&apos;{profile.shortTitle}&apos;</span>,
             </p>
-            <p className="pl-4">
+            <p className="pl-4 text-foreground/80">
               <span className="text-sky-300">stack</span>:{" "}
               <span className="text-amber-300">[&apos;Python&apos;, &apos;Java&apos;, &apos;Pandas&apos;]</span>,
             </p>
-            <p className="pl-4">
+            <p className="pl-4 text-foreground/80">
               <span className="text-sky-300">learning</span>:{" "}
               <span className="text-amber-300">true</span>,
             </p>
-            <p className="pl-4">
+            <p className="pl-4 text-foreground/80">
               <span className="text-sky-300">openToWork</span>:{" "}
               <motion.span
                 animate={{ opacity: [1, 0.4, 1] }}
@@ -258,8 +258,8 @@ function HeroVisual() {
               ,
             </p>
             <p className="text-muted-foreground">{"}"};</p>
-            <p className="pt-1 text-emerald-400">
-              <span className="text-muted-foreground">{"// "}</span>
+            <p className="pt-1 text-emerald-300">
+              <span className="text-foreground/60">{"// "}</span>
               ready to build.
             </p>
           </div>

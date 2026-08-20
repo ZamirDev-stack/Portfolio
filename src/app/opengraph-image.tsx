@@ -15,27 +15,39 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background:
-            "radial-gradient(1200px 600px at 20% 10%, rgba(16,185,129,0.18), transparent), radial-gradient(800px 500px at 80% 90%, rgba(13,148,136,0.16), transparent), #0a0c10",
+          backgroundColor: "#0a0c10",
           color: "#f1f5f9",
           fontFamily: "system-ui, sans-serif",
           padding: "72px 88px",
           position: "relative",
         }}
       >
-        {/* dotted grid */}
+        {/* Decorative glow blobs (solid colors, Satori-safe) */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-            maskImage:
-              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-            opacity: 0.6,
+            left: -120,
+            top: -120,
+            width: 520,
+            height: 520,
+            borderRadius: 9999,
+            backgroundColor: "rgba(16,185,129,0.22)",
+            display: "flex",
           }}
         />
+        <div
+          style={{
+            position: "absolute",
+            right: -140,
+            bottom: -140,
+            width: 460,
+            height: 460,
+            borderRadius: 9999,
+            backgroundColor: "rgba(13,148,136,0.18)",
+            display: "flex",
+          }}
+        />
+
         {/* top row */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div
@@ -43,7 +55,7 @@ export default async function Image() {
               width: 56,
               height: 56,
               borderRadius: 14,
-              background: "linear-gradient(135deg, #10b981, #0d9488)",
+              backgroundColor: "#10b981",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -65,10 +77,9 @@ export default async function Image() {
                 color: "#94a3b8",
                 fontFamily: "ui-monospace, monospace",
                 letterSpacing: 2,
-                textTransform: "uppercase",
               }}
             >
-              portfolio · 2026
+              PORTFOLIO · 2026
             </div>
           </div>
         </div>
@@ -84,33 +95,39 @@ export default async function Image() {
               color: "#10b981",
               fontFamily: "ui-monospace, monospace",
               letterSpacing: 4,
-              textTransform: "uppercase",
             }}
           >
-            <span style={{ width: 8, height: 8, borderRadius: 99, background: "#10b981" }} />
-            Open to opportunities
+            <span
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: 9999,
+                backgroundColor: "#10b981",
+                display: "flex",
+              }}
+            />
+            OPEN TO OPPORTUNITIES
           </div>
           <div
             style={{
-              fontSize: 76,
+              fontSize: 72,
               fontWeight: 800,
               letterSpacing: -2,
-              lineHeight: 1.02,
+              lineHeight: 1.05,
               maxWidth: 980,
+              display: "flex",
             }}
           >
-            Building Ideas Into{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #34d399, #5eead4)",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Digital Experiences.
-            </span>
+            Building Ideas Into Digital Experiences.
           </div>
-          <div style={{ fontSize: 22, color: "#cbd5e1", maxWidth: 880 }}>
+          <div
+            style={{
+              fontSize: 22,
+              color: "#cbd5e1",
+              maxWidth: 880,
+              display: "flex",
+            }}
+          >
             BCA student · Aspiring software developer · Python · Java · Data
             analysis
           </div>
